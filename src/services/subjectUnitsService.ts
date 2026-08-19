@@ -1,6 +1,37 @@
 import { Question, SubjectUnitSummary, NMMS_Subject, Quiz } from '../types';
 import { clientDb } from './db';
 
+// Static / Bundled Subject Unit JSON Modules via Vite glob
+const bundledUnitModules: Record<string, any> = (import.meta as any).glob
+  ? (import.meta as any).glob(
+      [
+        '/public/assets/matquiz/data/*.json',
+        '/public/assets/satmaths/data/*.json',
+        '/public/assets/satscience/data/*.json',
+        '/public/assets/satsocial/data/*.json',
+        '../../public/assets/matquiz/data/*.json',
+        '../../public/assets/satmaths/data/*.json',
+        '../../public/assets/satscience/data/*.json',
+        '../../public/assets/satsocial/data/*.json',
+      ],
+      { eager: true, import: 'default' }
+    )
+  : {};
+
+function getBundledUnitRawData(subject: NMMS_Subject, unitNum: number): any[] | null {
+  const folder = SUBJECT_CONFIGS[subject]?.folder;
+  if (!folder) return null;
+  const targetEnd = `/${folder}/data/unit${unitNum}.json`;
+  for (const [key, data] of Object.entries(bundledUnitModules)) {
+    if (key.toLowerCase().endsWith(targetEnd)) {
+      if (Array.isArray(data) && data.length > 0) {
+        return data;
+      }
+    }
+  }
+  return null;
+}
+
 // Subject configurations and asset directory mapping
 export const SUBJECT_CONFIGS: Record<
   NMMS_Subject,
@@ -276,19 +307,41 @@ export async function readAssetUnitQuestions(subject: NMMS_Subject, unitNum: num
     return assetQuestionsCache.get(cacheKey)!;
   }
 
-  const folder = SUBJECT_CONFIGS[subject].folder;
-  const url = `/assets/${folder}/data/unit${unitNum}.json`;
+  const meta = UNIT_METADATA_MAP[subject]?.[unitNum];
+  const topicName = meta ? `${meta.titleTa} (${meta.titleEn})` : `பகுதி ${unitNum} - Unit ${unitNum}`;
 
   try {
-    const res = await fetch(url);
-    if (!res.ok) {
+    let rawData: any[] | null = getBundledUnitRawData(subject, unitNum);
+
+    if (!rawData || rawData.length === 0) {
+      const folder = SUBJECT_CONFIGS[subject].folder;
+      const fileName = `unit${unitNum}.json`;
+      const candidateUrls = [
+        `/assets/${folder}/data/${fileName}`,
+        `./assets/${folder}/data/${fileName}`,
+        `assets/${folder}/data/${fileName}`,
+        `/public/assets/${folder}/data/${fileName}`,
+      ];
+
+      for (const url of candidateUrls) {
+        try {
+          const res = await fetch(url);
+          if (res.ok) {
+            const parsed = await res.json();
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              rawData = parsed;
+              break;
+            }
+          }
+        } catch {
+          // try next URL
+        }
+      }
+    }
+
+    if (!Array.isArray(rawData) || rawData.length === 0) {
       return [];
     }
-    const rawData = await res.json();
-    if (!Array.isArray(rawData)) return [];
-
-    const meta = UNIT_METADATA_MAP[subject]?.[unitNum];
-    const topicName = meta ? `${meta.titleTa} (${meta.titleEn})` : `பகுதி ${unitNum} - Unit ${unitNum}`;
 
     const parsed = rawData.map((raw: any, idx: number) =>
       normalizeQuestion(raw, idx, subject, unitNum, topicName)
@@ -297,7 +350,7 @@ export async function readAssetUnitQuestions(subject: NMMS_Subject, unitNum: num
     assetQuestionsCache.set(cacheKey, parsed);
     return parsed;
   } catch (e) {
-    console.warn(`Could not read unit questions from ${url}:`, e);
+    console.warn(`Could not read unit questions for ${subject} unit ${unitNum}:`, e);
     return [];
   }
 }

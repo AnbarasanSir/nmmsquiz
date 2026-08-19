@@ -1,12 +1,32 @@
 import { Quiz, Question, NMMS_Subject, PyqPaperSummary } from '../types';
 import { clientDb } from './db';
 
+// Static / Bundled PYQ JSON Modules via Vite glob
+const bundledPyqModules: Record<string, any> = (import.meta as any).glob
+  ? (import.meta as any).glob(
+      ['/public/assets/pyq/data/*.json', '../../public/assets/pyq/data/*.json'],
+      { eager: true, import: 'default' }
+    )
+  : {};
+
 // Cache for loaded PYQ papers
 const pyqQuizzesMap = new Map<string, Quiz>();
 let isLoaded = false;
 
 export const PYQ_YEARS = [2026, 2025, 2024, 2023, 2021, 2020, 2019, 2018, 2017];
 export const PYQ_TYPES: ('MAT' | 'SAT')[] = ['MAT', 'SAT'];
+
+function getBundledPyqRawData(year: number, type: 'MAT' | 'SAT'): any[] | null {
+  const targetEnd = `${type.toLowerCase()}${year}.json`;
+  for (const [key, data] of Object.entries(bundledPyqModules)) {
+    if (key.toLowerCase().endsWith(targetEnd)) {
+      if (Array.isArray(data) && data.length > 0) {
+        return data;
+      }
+    }
+  }
+  return null;
+}
 
 function formatPyqQuestion(
   raw: any,
@@ -60,10 +80,19 @@ function formatPyqQuestion(
   let questionImage: string | undefined = undefined;
   if (raw.image && typeof raw.image === 'string' && raw.image.trim()) {
     let img = raw.image.trim().replace(/^\/+/, '');
-    if (!img.startsWith('assets/')) {
-      img = `assets/pyq/${img}`;
+    if (img.startsWith('assets/')) {
+      questionImage = `/${img}`;
+    } else if (img.startsWith('image/')) {
+      const afterImage = img.replace(/^image\//, '');
+      if (!afterImage.includes('/')) {
+        const cleanFileName = afterImage.replace(/^(mat|sat)_/i, '');
+        questionImage = `/assets/pyq/image/${type.toLowerCase()}_${paperId.split('-')[1] || '2024'}/${cleanFileName}`;
+      } else {
+        questionImage = `/assets/pyq/${img}`;
+      }
+    } else {
+      questionImage = `/assets/pyq/${img}`;
     }
-    questionImage = `/${img}`;
   }
 
   return {
@@ -90,12 +119,33 @@ export async function loadPyqPaper(year: number, type: 'MAT' | 'SAT'): Promise<Q
   }
 
   try {
-    const fileName = `${type.toLowerCase()}${year}.json`;
-    const res = await fetch(`/assets/pyq/data/${fileName}`);
-    if (!res.ok) {
-      return null;
+    let rawData: any[] | null = getBundledPyqRawData(year, type);
+
+    if (!rawData || rawData.length === 0) {
+      const fileName = `${type.toLowerCase()}${year}.json`;
+      const candidateUrls = [
+        `/assets/pyq/data/${fileName}`,
+        `./assets/pyq/data/${fileName}`,
+        `assets/pyq/data/${fileName}`,
+        `/public/assets/pyq/data/${fileName}`,
+      ];
+
+      for (const url of candidateUrls) {
+        try {
+          const res = await fetch(url);
+          if (res.ok) {
+            const parsed = await res.json();
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              rawData = parsed;
+              break;
+            }
+          }
+        } catch {
+          // try next URL
+        }
+      }
     }
-    const rawData = await res.json();
+
     if (!Array.isArray(rawData) || rawData.length === 0) {
       return null;
     }
@@ -139,7 +189,7 @@ export async function loadPyqPaper(year: number, type: 'MAT' | 'SAT'): Promise<Q
 }
 
 export async function initAllPyqPapers(): Promise<void> {
-  if (isLoaded) return;
+  if (isLoaded && pyqQuizzesMap.size > 0) return;
   const loadPromises: Promise<any>[] = [];
   for (const year of PYQ_YEARS) {
     for (const type of PYQ_TYPES) {
@@ -147,7 +197,9 @@ export async function initAllPyqPapers(): Promise<void> {
     }
   }
   await Promise.all(loadPromises);
-  isLoaded = true;
+  if (pyqQuizzesMap.size > 0) {
+    isLoaded = true;
+  }
 }
 
 export async function getPyqPapersSummaries(): Promise<PyqPaperSummary[]> {
