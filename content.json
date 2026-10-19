@@ -1,0 +1,296 @@
+{
+  "version": 3,
+  "lastUpdated": "2026-10-19",
+  "subjects": [
+    {
+      "id": "math-101",
+      "title": "Mathematics",
+      "description": "Foundational mathematics covering algebra, geometry, and problem-solving techniques.",
+      "iconUrl": null,
+      "lessons": [
+        {
+          "id": "math-101-lesson-1",
+          "title": "Introduction to Algebra",
+          "orderIndex": 1,
+          "contents": [
+            {
+              "id": "math-101-1-text-1",
+              "type": "text",
+              "orderIndex": 1,
+              "data": {
+                "body": "Algebra is a branch of mathematics that uses symbols and letters to represent numbers and quantities in formulas and equations. The word 'algebra' comes from the Arabic word 'al-jabr', meaning 'reunion of broken parts'.\n\nIn algebra, we work with variables (like x, y, z) that can represent unknown values. The goal is often to find the value of these unknowns by manipulating equations."
+              }
+            },
+            {
+              "id": "math-101-1-image-1",
+              "type": "image",
+              "orderIndex": 2,
+              "data": {
+                "imageUrl": "https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvam9iNjgwLTE2Ni1wLWwxZGJ1cTN2LnBuZw.png",
+                "caption": "Basic algebraic expressions on blackboard"
+              }
+            },
+            {
+              "id": "math-101-1-text-2",
+              "type": "text",
+              "orderIndex": 3,
+              "data": {
+                "body": "Key concepts in algebra include:\n\n• Variables: Symbols that represent unknown values (e.g., x, y)\n• Constants: Fixed values (e.g., 3, -7, π)\n• Expressions: Combinations of variables, constants, and operations (e.g., 2x + 3)\n• Equations: Statements that two expressions are equal (e.g., 2x + 3 = 7)"
+              }
+            },
+            {
+              "id": "math-101-1-quiz-1",
+              "type": "quiz",
+              "orderIndex": 4,
+              "data": {
+                "question": "What is the value of x in the equation 2x + 4 = 10?",
+                "options": ["x = 2", "x = 3", "x = 4", "x = 5"],
+                "correctIndex": 1,
+                "explanation": "To solve 2x + 4 = 10, subtract 4 from both sides: 2x = 6. Then divide both sides by 2: x = 3."
+              }
+            }
+          ]
+        },
+        {
+          "id": "math-101-lesson-2",
+          "title": "Linear Equations",
+          "orderIndex": 2,
+          "contents": [
+            {
+              "id": "math-101-2-text-1",
+              "type": "text",
+              "orderIndex": 1,
+              "data": {
+                "body": "A linear equation is an equation where the highest power of the variable is 1. Linear equations graph as straight lines on a coordinate plane.\n\nThe standard form of a linear equation in two variables is: ax + by = c, where a, b, and c are real numbers."
+              }
+            },
+            {
+              "id": "math-101-2-text-2",
+              "type": "text",
+              "orderIndex": 2,
+              "data": {
+                "body": "The slope-intercept form y = mx + b is particularly useful because:\n\n• m represents the slope (steepness) of the line\n• b represents the y-intercept (where the line crosses the y-axis)\n\nA positive slope means the line goes upward from left to right, while a negative slope means it goes downward."
+              }
+            },
+            {
+              "id": "math-101-2-quiz-1",
+              "type": "quiz",
+              "orderIndex": 3,
+              "data": {
+                "question": "In the equation y = 3x + 2, what is the slope?",
+                "options": ["2", "3", "5", "1"],
+                "correctIndex": 1,
+                "explanation": "In the slope-intercept form y = mx + b, the coefficient of x is the slope. Here m = 3, so the slope is 3."
+              }
+            }
+          ]
+        },
+        {
+          "id": "math-101-lesson-3",
+          "title": "Matrices & Operations",
+          "orderIndex": 3,
+          "contents": [
+            {
+              "id": "math-101-3-text-1",
+              "type": "text",
+              "orderIndex": 1,
+              "data": {
+                "body": "A Matrix is a rectangular array of numbers, symbols, or expressions arranged in rows and columns.\n\nA matrix with m rows and n columns is of order (dimension) m × n.\n\nExample of a 2 × 2 matrix:\n  A = [ a₁₁   a₁₂ ]\n      [ a₂₁   a₂₂ ]\n\nFor example:\n  A = [ 2   5 ]\n      [ 1   3 ]\n\nHere, the dimension is 2 × 2 and contains 4 elements."
+              }
+            },
+            {
+              "id": "math-101-3-image-1",
+              "type": "image",
+              "orderIndex": 2,
+              "data": {
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Matrix_multiplication_diagram_2.svg/800px-Matrix_multiplication_diagram_2.svg.png",
+                "caption": "Matrix multiplication: combining row elements of matrix A with column elements of matrix B"
+              }
+            },
+            {
+              "id": "math-101-3-text-2",
+              "type": "text",
+              "orderIndex": 3,
+              "data": {
+                "body": "Key Matrix Concepts & Operations:\n\n• Matrix Addition: Matrices of identical order are added element-by-element:\n  [ a   b ] + [ e   f ] = [ a+e   b+f ]\n  [ c   d ]   [ g   h ]   [ c+g   d+h ]\n\n• Determinant of a 2×2 Matrix (det A or |A|):\n  det [ a   b ] = (a · d) - (b · c)\n      [ c   d ]\n\n• Identity Matrix (I):\n  I = [ 1   0 ]\n      [ 0   1 ]\n  Multiplying any square matrix by I leaves it unchanged: A · I = A"
+              }
+            },
+            {
+              "id": "math-101-3-quiz-1",
+              "type": "quiz",
+              "orderIndex": 4,
+              "data": {
+                "question": "What is the determinant of the matrix A = [ 4   2 ]\n                                           [ 1   3 ] ?",
+                "options": ["10", "14", "12", "8"],
+                "correctIndex": 0,
+                "explanation": "The determinant of [a b; c d] is (a × d) - (b × c). Here: (4 × 3) - (2 × 1) = 12 - 2 = 10."
+              }
+            }
+          ]
+        },
+        {
+          "id": "math-101-lesson-4",
+          "title": "Integrals & Calculus",
+          "orderIndex": 4,
+          "contents": [
+            {
+              "id": "math-101-4-text-1",
+              "type": "text",
+              "orderIndex": 1,
+              "data": {
+                "body": "Integration is the inverse process of differentiation. It is used to calculate quantities such as areas, volumes, centers of mass, and total accumulation.\n\n• Indefinite Integral (Antiderivative):\n  ∫ f(x) dx = F(x) + C\n  where F'(x) = f(x) and C is the constant of integration.\n\n• Definite Integral:\n  ∫ₐᵇ f(x) dx = F(b) - F(a)\n  (By the Fundamental Theorem of Calculus, this represents the net signed area under f(x) from x = a to x = b)."
+              }
+            },
+            {
+              "id": "math-101-4-image-1",
+              "type": "image",
+              "orderIndex": 2,
+              "data": {
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Integral_as_region_under_curve.svg/800px-Integral_as_region_under_curve.svg.png",
+                "caption": "The definite integral represents the area under the curve f(x) from a to b"
+              }
+            },
+            {
+              "id": "math-101-4-text-2",
+              "type": "text",
+              "orderIndex": 3,
+              "data": {
+                "body": "Standard Integration Rules:\n\n• Power Rule:\n  ∫ xⁿ dx = (xⁿ⁺¹)/(n + 1) + C   (for n ≠ -1)\n  Example: ∫ x² dx = x³/3 + C\n\n• Exponential Rule:\n  ∫ eˣ dx = eˣ + C\n\n• Reciprocal Rule:\n  ∫ (1/x) dx = ln|x| + C\n\n• Constant Multiple & Sum Rule:\n  ∫ k·f(x) dx = k·∫ f(x) dx\n  ∫ [f(x) + g(x)] dx = ∫ f(x) dx + ∫ g(x) dx"
+              }
+            },
+            {
+              "id": "math-101-4-quiz-1",
+              "type": "quiz",
+              "orderIndex": 4,
+              "data": {
+                "question": "What is the indefinite integral ∫ (3x² + 2x) dx ?",
+                "options": ["x³ + x² + C", "6x + 2 + C", "3x³ + 2x² + C", "x³ + 2x² + C"],
+                "correctIndex": 0,
+                "explanation": "Apply the power rule to each term: ∫ 3x² dx = 3(x³/3) = x³, and ∫ 2x dx = 2(x²/2) = x². Summing gives x³ + x² + C."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "science-101",
+      "title": "Science",
+      "description": "Explore the natural world through physics, chemistry, and biology fundamentals.",
+      "iconUrl": null,
+      "lessons": [
+        {
+          "id": "science-101-lesson-1",
+          "title": "The Scientific Method",
+          "orderIndex": 1,
+          "contents": [
+            {
+              "id": "science-101-1-text-1",
+              "type": "text",
+              "orderIndex": 1,
+              "data": {
+                "body": "The scientific method is a systematic approach to learning about the world around us. It involves making observations, forming hypotheses, conducting experiments, and drawing conclusions.\n\nScientists have used this method for centuries to discover new things and solve problems."
+              }
+            },
+            {
+              "id": "science-101-1-text-2",
+              "type": "text",
+              "orderIndex": 2,
+              "data": {
+                "body": "Steps of the Scientific Method:\n\n1. Observation: Notice something interesting in the world\n2. Question: Ask a question about your observation\n3. Hypothesis: Form a testable prediction\n4. Experiment: Design and conduct a test\n5. Analysis: Examine your results\n6. Conclusion: Determine if your hypothesis was supported"
+              }
+            },
+            {
+              "id": "science-101-1-image-1",
+              "type": "image",
+              "orderIndex": 3,
+              "data": {
+                "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/The_Scientific_Method.svg/800px-The_Scientific_Method.svg.png",
+                "caption": "The steps of the scientific method"
+              }
+            },
+            {
+              "id": "science-101-1-quiz-1",
+              "type": "quiz",
+              "orderIndex": 4,
+              "data": {
+                "question": "What comes AFTER forming a hypothesis in the scientific method?",
+                "options": ["Observation", "Conclusion", "Experiment", "Question"],
+                "correctIndex": 2,
+                "explanation": "After forming a hypothesis (a testable prediction), the next step is to design and conduct an experiment to test that hypothesis."
+              }
+            }
+          ]
+        },
+        {
+          "id": "science-101-lesson-2",
+          "title": "States of Matter",
+          "orderIndex": 2,
+          "contents": [
+            {
+              "id": "science-101-2-text-1",
+              "type": "text",
+              "orderIndex": 1,
+              "data": {
+                "body": "Matter exists in several states, but the three most common are solid, liquid, and gas. The state of matter depends on the temperature and pressure of the substance.\n\n• Solids have a fixed shape and volume. Their particles are tightly packed and vibrate in place.\n• Liquids have a fixed volume but take the shape of their container. Their particles can slide past each other.\n• Gases have no fixed shape or volume. Their particles move freely and fill any container."
+              }
+            },
+            {
+              "id": "science-101-2-quiz-1",
+              "type": "quiz",
+              "orderIndex": 2,
+              "data": {
+                "question": "Which state of matter has a definite volume but no definite shape?",
+                "options": ["Solid", "Liquid", "Gas", "Plasma"],
+                "correctIndex": 1,
+                "explanation": "Liquids have a definite volume (they don't expand to fill their container) but no definite shape (they take the shape of their container)."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "history-101",
+      "title": "History",
+      "description": "Journey through world history from ancient civilizations to modern times.",
+      "iconUrl": null,
+      "lessons": [
+        {
+          "id": "history-101-lesson-1",
+          "title": "Ancient Civilizations",
+          "orderIndex": 1,
+          "contents": [
+            {
+              "id": "history-101-1-text-1",
+              "type": "text",
+              "orderIndex": 1,
+              "data": {
+                "body": "The earliest civilizations emerged around 3500 BCE in the fertile river valleys of Mesopotamia (modern-day Iraq) and Egypt. These civilizations developed writing, agriculture, and complex social structures that laid the foundation for modern society.\n\nMesopotamia, known as the 'Cradle of Civilization,' saw the rise of the Sumerian, Akkadian, Babylonian, and Assyrian empires."
+              }
+            },
+            {
+              "id": "history-101-1-text-2",
+              "type": "text",
+              "orderIndex": 2,
+              "data": {
+                "body": "Key achievements of ancient civilizations:\n\n• Writing systems (cuneiform, hieroglyphics)\n• Mathematical concepts (base-60 system, geometry)\n• Architectural marvels (pyramids, ziggurats)\n• Legal codes (Code of Hammurabi)\n• Irrigation systems and agriculture"
+              }
+            },
+            {
+              "id": "history-101-1-quiz-1",
+              "type": "quiz",
+              "orderIndex": 3,
+              "data": {
+                "question": "Which region is known as the 'Cradle of Civilization'?",
+                "options": ["Egypt", "China", "Mesopotamia", "India"],
+                "correctIndex": 2,
+                "explanation": "Mesopotamia (modern-day Iraq), located between the Tigris and Euphrates rivers, is called the 'Cradle of Civilization' because some of the earliest known civilizations developed there."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
