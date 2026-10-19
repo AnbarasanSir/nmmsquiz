@@ -1,10 +1,10 @@
 {
-  "version": 7,
+  "version": 1,
   "lastUpdated": "2026-10-19",
   "subjects": [
     {
       "id": "math-101",
-      "title": "ANBU Mathematics",
+      "title": "Mathematics",
       "description": "Foundational mathematics covering algebra, geometry, and problem-solving techniques.",
       "iconUrl": null,
       "lessons": [
