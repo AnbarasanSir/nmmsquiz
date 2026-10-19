@@ -1,10 +1,10 @@
 {
-  "version": 6,
+  "version": 7,
   "lastUpdated": "2026-10-19",
   "subjects": [
     {
       "id": "math-101",
-      "title": "wqw Mathematics",
+      "title": "A Mathematics",
       "description": "Foundational mathematics covering algebra, geometry, and problem-solving techniques.",
       "iconUrl": null,
       "lessons": [
@@ -36,28 +36,6 @@
               "orderIndex": 3,
               "data": {
                 "body": "Key concepts in algebra include:\n\n• Variables: Symbols that represent unknown values (e.g., x, y)\n• Constants: Fixed values (e.g., 3, -7, π)\n• Expressions: Combinations of variables, constants, and operations (e.g., 2x + 3)\n• Equations: Statements that two expressions are equal (e.g., 2x + 3 = 7)"
-              }
-            },
-            {
-              "id": "science-101-2-quiz-1",
-              "type": "quiz",
-              "orderIndex": 2,
-              "data": {
-                "question": "Which state of matter has a definite volume but no definite shape?",
-                "options": ["Solid", "Liquid", "Gas", "Plasma"],
-                "correctIndex": 1,
-                "explanation": "Liquids have a definite volume (they don't expand to fill their container) but no definite shape (they take the shape of their container)."
-              }
-            },
-            {
-              "id": "science-101-2-quiz-1",
-              "type": "quiz",
-              "orderIndex": 2,
-              "data": {
-                "question": "Which state of matter has a definite volume but no definite shape?",
-                "options": ["Solid", "Liquid", "Gas", "Plasma"],
-                "correctIndex": 1,
-                "explanation": "Liquids have a definite volume (they don't expand to fill their container) but no definite shape (they take the shape of their container)."
               }
             },
             {
@@ -259,6 +237,28 @@
             },
             {
               "id": "science-101-2-quiz-1",
+              "type": "quiz",
+              "orderIndex": 2,
+              "data": {
+                "question": "Which state of matter has a definite volume but no definite shape?",
+                "options": ["Solid", "Liquid", "Gas", "Plasma"],
+                "correctIndex": 1,
+                "explanation": "Liquids have a definite volume (they don't expand to fill their container) but no definite shape (they take the shape of their container)."
+              }
+            },
+            {
+              "id": "science-101-2-quiz-2",
+              "type": "quiz",
+              "orderIndex": 2,
+              "data": {
+                "question": "Which state of matter has a definite volume but no definite shape?",
+                "options": ["Solid", "Liquid", "Gas", "Plasma"],
+                "correctIndex": 1,
+                "explanation": "Liquids have a definite volume (they don't expand to fill their container) but no definite shape (they take the shape of their container)."
+              }
+            },
+            {
+              "id": "science-101-2-quiz-3",
               "type": "quiz",
               "orderIndex": 2,
               "data": {
