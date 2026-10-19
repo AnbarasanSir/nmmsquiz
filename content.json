@@ -1,10 +1,10 @@
 {
-  "version": 5,
+  "version": 6,
   "lastUpdated": "2026-10-19",
   "subjects": [
     {
       "id": "math-101",
-      "title": "Mathematics",
+      "title": "wqw Mathematics",
       "description": "Foundational mathematics covering algebra, geometry, and problem-solving techniques.",
       "iconUrl": null,
       "lessons": [
