@@ -4,13 +4,13 @@
   "subjects": [
     {
       "id": "math-101",
-      "title": "A Mathematics",
+      "title": "ANBU Mathematics",
       "description": "Foundational mathematics covering algebra, geometry, and problem-solving techniques.",
       "iconUrl": null,
       "lessons": [
         {
           "id": "math-101-lesson-1",
-          "title": "Introduction to Algebra",
+          "title": "Introduction to an Algebra",
           "orderIndex": 1,
           "contents": [
             {
